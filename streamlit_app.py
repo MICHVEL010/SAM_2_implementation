@@ -118,7 +118,7 @@ def call_single_extract(image_bytes: bytes, filename: str, x: int, y: int):
         f"{API_BASE}/extract/single",
         files={"file": (filename, image_bytes, "image/jpeg")},
         data={"x": x, "y": y},
-        timeout=120,
+        timeout=300,
     )
     if resp.status_code == 200:
         return resp.content
@@ -136,7 +136,7 @@ def call_multi_extract(image_bytes: bytes, filename: str, points: list):
         f"{API_BASE}/extract/multi",
         files={"file": (filename, image_bytes, "image/jpeg")},
         data={"points": json.dumps(points)},
-        timeout=120,
+        timeout=300,
     )
     if resp.status_code == 200:
         return resp.content
@@ -154,7 +154,7 @@ def call_preview(image_bytes: bytes, filename: str, points: list):
         f"{API_BASE}/extract/preview",
         files={"file": (filename, image_bytes, "image/jpeg")},
         data={"points": json.dumps(points)},
-        timeout=120,
+        timeout=300,
     )
     if resp.status_code == 200:
         return resp.content
